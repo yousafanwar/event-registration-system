@@ -5,25 +5,17 @@ const store = createStore({
     state: {
         events: [],
         eventId: 0,
-        userName: '',
-        email: '',
-        phone: ''
+        userData: {}
     },
     mutations: {
         updateEvents(state, events) {
             state.events = events
         },
-        setUserName(state, name) {
-            state.userName = name;
-        },
-        setEmail(state, email) {
-            state.email = email;
-        },
-        setPhone(state, phone) {
-            state.phone = phone;
-        },
         setEventId(state, eventId) {
             state.eventId = eventId
+        },
+        setUserData(state, userData){
+            state.userData = userData;
         }
     },
     actions: {

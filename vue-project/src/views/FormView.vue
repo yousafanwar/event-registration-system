@@ -7,7 +7,7 @@
           <label for="validationCustom01" class="form-label">User Name</label>
           <input
             type="text"
-            v-model="userName"
+            v-model="userData.userName"
             class="form-control"
             id="validationCustom01"
             required
@@ -20,7 +20,7 @@
           >
           <input
             type="email"
-            v-model="email"
+            v-model="userData.email"
             class="form-control"
             id="exampleInputEmail1"
             aria-describedby="emailHelp"
@@ -33,7 +33,7 @@
           <label for="exampleInputEmail1" class="form-label">Phone</label>
           <input
             type="tel"
-            v-model="phone"
+            v-model="userData.phone"
             class="form-control"
             maxlength="10"
           />
@@ -49,16 +49,16 @@ import store from "../store/index.js";
 export default {
   data() {
     return {
-      userName: "",
-      email: "",
-      phone: "",
+        userData: {
+            userName: "",
+            email: "",
+            phone: ""
+        }
     };
   },
   methods: {
     formSubmission() {
-      store.commit("setUserName", this.userName);
-      store.commit("setEmail", this.email);
-      store.commit("setPhone", this.phone);
+      store.commit("setUserData", this.userData);
       this.$router.push("/confirmationPage");
     },
   },

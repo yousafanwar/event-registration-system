@@ -2,9 +2,9 @@
   <div>
     <RouterLink to="/">Back To Events</RouterLink>
     <h1>Congragulations you have successfully registered for the Event</h1>
-    <h2>Name: {{ userName }}</h2>
-    <p>Email Address: {{ email }}</p>
-    <p>Contact Number: {{ phone }}</p>
+    <h2>Name: {{ userData.userName }}</h2>
+    <p>Email Address: {{ userData.email }}</p>
+    <p>Contact Number: {{ userData.phone }}</p>
     <p>Event: {{ eventDetails.eventName }}</p>
     <p>Date: {{ eventDetails.date }}</p>
     <p>Venue: {{ eventDetails.location }}</p>
@@ -25,14 +25,8 @@ export default {
     this.getEventDetails();
   },
   computed: {
-    userName() {
-      return store.state.userName;
-    },
-    email() {
-      return store.state.email;
-    },
-    phone() {
-      return store.state.phone;
+    userData(){
+        return store.state.userData;
     },
     eventId() {
       return store.state.eventId;
