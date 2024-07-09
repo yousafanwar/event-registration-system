@@ -2,12 +2,14 @@
   <div>
     <ul>
       <li v-for="event in events" :key="event.id" class="eventContainer">
-        <h1>{{ event.eventName }}</h1>
+        <div class="centerDiv">
+        <h2>{{ event.eventName }}</h2>
         <p>Date: {{ event.date }}</p>
         <p>Location: {{ event.location }}</p>
         <RouterLink class="btn" to="./form" @click="getEventId(event.id)"
           >Register</RouterLink
         >
+        </div>
       </li>
     </ul>
   </div>
@@ -54,7 +56,19 @@ li {
   background-color: white;
 }
 .btn:hover {
-  background-color: black;
+  background-color: gray;
   color: white;
 }
+li:hover{
+  transform: translateY(-5px);
+  transition: ease 0.5s;
+  cursor: pointer;
+  background: black;
+  color: white;
+
+}
+.centerDiv{
+  text-align: center;
+}
+
 </style>

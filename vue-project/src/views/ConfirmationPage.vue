@@ -2,12 +2,16 @@
   <div>
     <RouterLink to="/">Back To Events</RouterLink>
     <h1>Congragulations you have successfully registered for the Event</h1>
-    <h2>Name: {{ userData.userName }}</h2>
-    <p>Email Address: {{ userData.email }}</p>
-    <p>Contact Number: {{ userData.phone }}</p>
-    <p>Event: {{ eventDetails.eventName }}</p>
-    <p>Date: {{ eventDetails.date }}</p>
-    <p>Venue: {{ eventDetails.location }}</p>
+    <div class="userDetailsContainer mx-auto">
+        <div class="col-md-6 mx-auto">
+    <h2 class="listItem">Name: {{ userData.userName }}</h2>
+    <p class="listItem">Email Address: {{ userData.email }}</p>
+    <p class="listItem">Contact Number: {{ userData.phone }}</p>
+    <p class="listItem">Event: {{ eventDetails.eventName }}</p>
+    <p class="listItem">Date: {{ eventDetails.date }}</p>
+    <p class="listItem">Venue: {{ eventDetails.location }}</p>
+    </div>
+    </div>
   </div>
 </template>
 
@@ -42,8 +46,34 @@ export default {
           this.eventDetails = e;
         }
       });
-      console.log(this.eventDetails);
     },
   },
 };
 </script>
+
+<style>
+    h1{
+        text-align: center;
+        margin: 50px;
+    }
+    .userDetailsContainer{
+        border: solid black;
+        max-width: 50%;
+        background-color: hsl(0, 0%, 70%);
+        border-radius: 10px;
+        border-color: hsl(0, 0%, 100%);
+        margin: 15px 0;
+        padding: 10px;
+    }
+    p{
+        font-size: 1.5rem;
+    }
+    .listItem{
+        text-align: center;
+    }
+    .listItem:hover{
+        background-color: hsl(0, 0%, 110%);
+        cursor: pointer;
+
+    }
+</style>

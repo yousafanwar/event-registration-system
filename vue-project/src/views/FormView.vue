@@ -10,6 +10,7 @@
             v-model="userData.userName"
             class="form-control"
             id="validationCustom01"
+            placeholder="Enter Your Name..."
             required
           />
           <div class="valid-feedback"></div>
@@ -23,6 +24,7 @@
             v-model="userData.email"
             class="form-control"
             id="exampleInputEmail1"
+            placeholder="Enter your email address..."
             aria-describedby="emailHelp"
           />
           <div id="emailHelp" class="form-text">
@@ -35,6 +37,7 @@
             type="tel"
             v-model="userData.phone"
             class="form-control"
+            placeholder="Enter your contact number..."
             maxlength="10"
           />
         </div>
@@ -69,13 +72,16 @@ export default {
 h1 {
   text-align: center;
 }
+h1{
+    margin: 50px;
+}
 .formDiv {
-  border: solid black 5px;
-  border-style: groove;
-  border-color: bisque;
-  background-color: hsl(34, 38%, 91%);
+  border: solid 5px;
+  border-color: hsl(0, 0%, 100%);
+  background-color: hsl(0, 0%, 70%);
   border-radius: 10px;
   width: 50%;
+  padding: 15px;
 }
 .btn {
   display: flex;
@@ -86,5 +92,8 @@ h1 {
 .btn:hover {
   background-color: black;
   color: white;
+}
+label{
+    font-size: 1.2rem;
 }
 </style>
