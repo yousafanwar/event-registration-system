@@ -1,12 +1,10 @@
 <template>
 <div>
-  <!-- <h1> {{abc}} </h1> 
-  <button @click="fetchData">Push me to get data</button> -->
   <ul>
     <li v-for="event in events" :key="event.id" class="eventContainer">
-      <h1>{{event.name}}</h1>
-        <p>{{event.date}}</p>
-        <p>{{event.location}}</p>
+      <h1>{{event.eventName}}</h1>
+        <p>Date: {{event.date}}</p>
+        <p>Location: {{event.location}}</p>
         <RouterLink class="btn" to="./form">Register</RouterLink>
     </li>
   </ul>
@@ -17,39 +15,21 @@
 <script>
     import axios from 'axios';
     import { RouterLink } from 'vue-router';
+    import store from '../store/index.js';
   export default{
-
-    data(){
-      return{
-        abc: "data",
-        events: [
-          {id: 1, name: 'Party', date: new Date().getDate(), location: 'Lahore'},
-          {id: 2, name: 'Office Meeting', date: new Date().getDate(), location: 'Lahore'},
-          {id: 3, name: 'Just chill', date: new Date().getDate(), location: 'Muree'},
-          ]
+    mounted(){
+      this.fetchEventData();
+      },
+    computed:{
+      events(){
+        return store.state.events;
       }
     },
-    mounted(){
-      // this.fetchData;
-      },
     methods:{
-      async fetchData(){
-        // api key: MKSTDUMZDEQJUDF6X5IP
-  const response = await axios.get('https://www.eventbriteapi.com/v3/events/search/', {
-          headers: {
-            Authorization: `Bearer MKSTDUMZDEQJUDF6X5IP`
-          },
-   params: {
-            q: 'conference', // Example query parameter
-            'location.address': 'New York', // Correctly use quotes for keys with special characters like '.'
-            sort_by: 'date',
-            page: 1,
-            page_size: 10 // Example pagination
-          }
-        });
-          // const result = await response;
-          // console.log(result);
-      },
+      async fetchEventData(){
+      const response = await axios.get('data.json');
+          store.commit('updateEvents', response.data);          
+      }
     }
   }
 </script>
