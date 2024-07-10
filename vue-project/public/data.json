@@ -16,5 +16,17 @@
         "eventName": "College Reunion",
         "date": "17/06/2024",
         "location": "Mall of Lahore"
+    },
+    {
+        "id": 4,
+        "eventName": "Vue.JS Conference",
+        "date": "25/07/2024",
+        "location": "Expo Center"
+    },
+    {
+        "id": 5,
+        "eventName": "React.JS Conference",
+        "date": "20/08/2024",
+        "location": "Expo Center"
     }
 ]

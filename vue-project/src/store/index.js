@@ -5,7 +5,8 @@ const store = createStore({
     state: {
         events: [],
         eventId: 0,
-        userData: {}
+        userData: {},
+        userRegisteredEvents: []
     },
     mutations: {
         updateEvents(state, events) {
@@ -14,8 +15,11 @@ const store = createStore({
         setEventId(state, eventId) {
             state.eventId = eventId
         },
-        setUserData(state, userData){
+        setUserData(state, userData) {
             state.userData = userData;
+        },
+        setUserRegisteredEvents(state, regEvents) {
+            state.userRegisteredEvents.push(regEvents);
         }
     },
     actions: {

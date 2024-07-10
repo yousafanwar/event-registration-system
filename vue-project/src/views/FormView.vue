@@ -2,7 +2,7 @@
   <div>
     <h1>Kindly fill out the form to register for the event!!!</h1>
     <div class="formDiv mx-auto">
-      <form @submit.prevent="formSubmission" class="mx-auto">
+      <form @submit.prevent="formSubmission" class="needs-validation mx-auto">
         <div class="col-md-6 mx-auto">
           <label for="validationCustom01" class="form-label">User Name</label>
           <input
@@ -13,7 +13,6 @@
             placeholder="Enter Your Name..."
             required
           />
-          <div class="valid-feedback"></div>
         </div>
         <div class="col-md-6 mx-auto">
           <label for="exampleInputEmail1" class="form-label"
@@ -26,19 +25,22 @@
             id="exampleInputEmail1"
             placeholder="Enter your email address..."
             aria-describedby="emailHelp"
+            required
           />
           <div id="emailHelp" class="form-text">
             We'll never share your email with anyone else.
           </div>
         </div>
         <div class="col-md-6 mx-auto">
-          <label for="exampleInputEmail1" class="form-label">Phone</label>
+          <label for="exampleInputPhone1" class="form-label">Phone</label>
           <input
             type="tel"
             v-model="userData.phone"
             class="form-control"
             placeholder="Enter your contact number..."
             maxlength="10"
+            pattern="[0-9]*"
+            required
           />
         </div>
         <button type="submit" class="btn mx-auto">Submit</button>
@@ -52,11 +54,11 @@ import store from "../store/index.js";
 export default {
   data() {
     return {
-        userData: {
-            userName: "",
-            email: "",
-            phone: ""
-        }
+      userData: {
+        userName: "",
+        email: "",
+        phone: "",
+      },
     };
   },
   methods: {
@@ -72,8 +74,8 @@ export default {
 h1 {
   text-align: center;
 }
-h1{
-    margin: 50px;
+h1 {
+  margin: 50px;
 }
 .formDiv {
   border: solid 5px;
@@ -93,7 +95,7 @@ h1{
   background-color: black;
   color: white;
 }
-label{
-    font-size: 1.2rem;
+label {
+  font-size: 1.2rem;
 }
 </style>

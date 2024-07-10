@@ -2,6 +2,7 @@ import { createRouter, createWebHistory } from 'vue-router'
 import HomeView from '../views/HomeView.vue'
 import FormView from '../views/FormView.vue'
 import ConfirmationPage from '../views/ConfirmationPage.vue'
+import UserRegisteredEvents from '../views/UserRegisteredEvents.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -20,7 +21,12 @@ const router = createRouter({
       path: '/confirmationPage',
       name: 'confirmationPage',
       component: ConfirmationPage
-    }
+    },
+    {
+      path: '/userEvents',
+      name: 'UserRegisteredEvents',
+      component: UserRegisteredEvents
+    },
   ]
 })
 
