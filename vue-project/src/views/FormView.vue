@@ -2,7 +2,8 @@
   <div>
     <h1>Kindly fill out the form to register for the event!!!</h1>
     <div class="formDiv mx-auto">
-      <form @submit.prevent="formSubmission" class="needs-validation mx-auto">
+      <form @submit.prevent="dataValidation" class="needs-validation mx-auto">
+
         <div class="col-md-6 mx-auto">
           <label for="validationCustom01" class="form-label">User Name</label>
           <input
@@ -39,10 +40,13 @@
             class="form-control"
             placeholder="Enter your contact number..."
             maxlength="10"
-            pattern="[0-9]*"
             required
           />
         </div>
+            <div v-if="!isValid" class="alert alert-danger">
+            <p v-if="!isValidEmail">Enter a valid email address</p>
+            <p v-if="!isValidPhone">Phone number must contain only digits</p>
+      </div>
         <button type="submit" class="btn mx-auto">Submit</button>
       </form>
     </div>
@@ -59,13 +63,27 @@ export default {
         email: "",
         phone: "",
       },
+      isValid: true,
+      isValidEmail: true,
+      isValidPhone: true
     };
   },
   methods: {
+    dataValidation(){
+        const emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+        const phonePattern = /^[0-9]+$/;
+        this.isValidEmail = emailPattern.test(this.userData.email);
+        this.isValidPhone = phonePattern.test(this.userData.phone);
+        if(!this.isValidEmail || !this.isValidPhone){
+            this.isValid = false;
+        }else{
+            this.formSubmission();
+        }
+    },
     formSubmission() {
       store.commit("setUserData", this.userData);
       this.$router.push("/confirmationPage");
-    },
+    }
   },
 };
 </script>
@@ -98,4 +116,4 @@ h1 {
 label {
   font-size: 1.2rem;
 }
-</style>
+</style>    
